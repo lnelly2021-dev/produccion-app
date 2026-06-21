@@ -4,10 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./globals.css";
 import {
-  Monitor, LayoutGrid, Zap, BarChart2, TrendingUp,
-  BookOpen, ArrowDownToLine, Wallet, Clock, CreditCard, ClipboardList,
-  Package, PackageMinus, Settings, User, Truck, Users, PieChart,
-  MapPin, BookMarked, LogOut, FilePen, ChevronDown, Menu, X,
+  Monitor, FlaskConical, BookOpen, GitBranch, BarChart2,
+  Settings, LogOut, ChevronDown, Menu, X, Users,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { AuthProvider, useAuth } from "../contexts/AuthContext";
@@ -120,8 +118,8 @@ function AppShell({ children }: { children: React.ReactNode }) {
           <Menu size={22} />
         </button>
         <div className="flex flex-col leading-none">
-          <h2 className="text-base font-black text-gray-900 tracking-tighter">SMART<span className="text-slate-400">POS</span></h2>
-          <span className="text-[8px] font-black text-amber-500 tracking-[0.3em] mt-0.5">ELITE</span>
+          <h2 className="text-base font-black text-gray-900 tracking-tighter">PRODUC<span className="text-emerald-500">CIÓN</span></h2>
+          <span className="text-[8px] font-black text-emerald-500 tracking-[0.3em] mt-0.5">COSTOS</span>
         </div>
         <div className="w-8" /> {/* Spacer */}
       </div>
@@ -136,8 +134,8 @@ function AppShell({ children }: { children: React.ReactNode }) {
         {/* Header sidebar móvil */}
         <div className="md:hidden flex items-center justify-between px-4 py-3 border-b border-gray-100">
           <div className="flex flex-col leading-none">
-            <h2 className="text-base font-black text-gray-900 tracking-tighter">SMART<span className="text-slate-400">POS</span></h2>
-            <span className="text-[8px] font-black text-amber-500 tracking-[0.3em] mt-0.5">ELITE</span>
+            <h2 className="text-base font-black text-gray-900 tracking-tighter">PRODUC<span className="text-emerald-500">CIÓN</span></h2>
+            <span className="text-[8px] font-black text-emerald-500 tracking-[0.3em] mt-0.5">COSTOS</span>
           </div>
           <button onClick={() => setSidebarOpen(false)} className="text-gray-400">
             <X size={20} />
@@ -152,8 +150,8 @@ function AppShell({ children }: { children: React.ReactNode }) {
               <Monitor size={16} className="text-white" />
             </div>
             <div className="flex flex-col leading-none">
-              <h2 className="text-[15px] font-black text-gray-900 tracking-tighter leading-none">SMART<span className="text-blue-600">POS</span></h2>
-              <span className="text-[9px] font-black text-amber-500 tracking-[0.3em] mt-0.5">ELITE</span>
+              <h2 className="text-[15px] font-black text-gray-900 tracking-tighter leading-none">PRODUC<span className="text-emerald-500">CIÓN</span></h2>
+              <span className="text-[9px] font-black text-emerald-500 tracking-[0.3em] mt-0.5">COSTOS</span>
             </div>
           </div>
 
@@ -214,67 +212,38 @@ function AppShell({ children }: { children: React.ReactNode }) {
         {/* Navigation */}
         <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto custom-scrollbar">
 
-          {/* OPERACIONES */}
+          {/* PRODUCCIÓN */}
           <div>
             <button onClick={() => setOpenOps(v => !v)}
               className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-gray-50 transition-all group">
-              <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest group-hover:text-gray-600">Operaciones</p>
+              <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest group-hover:text-gray-600">Producción</p>
               <ChevronDown size={13} className={`text-gray-400 transition-transform duration-200 ${openOps ? "" : "-rotate-90"}`} />
             </button>
             {openOps && (
               <div className="space-y-1 mt-1 mb-3">
-                <Link href="/tables" className={linkCls("/tables")}><LayoutGrid size={16} /> Mesas</Link>
-                <Link href="/venta-rapida" className={linkCls("/venta-rapida")}><Zap size={16} /> Venta Rápida</Link>
-                <Link href="/domicilios" className={linkCls("/domicilios")}><MapPin size={16} /> Domicilios</Link>
-                <Link href="/anticipos" className={linkCls("/anticipos")}><Wallet size={16} className="text-amber-500 shrink-0" /> Anticipos (PF)</Link>
+                <Link href="/ingredientes"   className={linkCls("/ingredientes")}><FlaskConical size={16} /> Ingredientes</Link>
+                <Link href="/recetas"        className={linkCls("/recetas")}><BookOpen size={16} /> Recetas</Link>
+                <Link href="/centros-costo"  className={linkCls("/centros-costo")}><GitBranch size={16} /> Planificador de Producción</Link>
+                <Link href="/hoja-costos"    className={linkCls("/hoja-costos")}><BarChart2 size={16} className="text-emerald-500 shrink-0" /> Hoja de Costos</Link>
               </div>
             )}
           </div>
 
-          {/* GESTIÓN CONTABLE */}
+          {/* ADMINISTRACIÓN */}
           <div>
             <button onClick={() => setOpenContable(v => !v)}
               className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-gray-50 transition-all group">
-              <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest group-hover:text-gray-600">Gestión Contable</p>
+              <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest group-hover:text-gray-600">Administración</p>
               <ChevronDown size={13} className={`text-gray-400 transition-transform duration-200 ${openContable ? "" : "-rotate-90"}`} />
             </button>
             {openContable && (
               <div className="space-y-1 mt-1 mb-3">
-                <Link href="/movimientos" className={linkCls("/movimientos")}><BarChart2 size={16} /> Movimientos</Link>
-                <Link href="/estadisticas" className={linkCls("/estadisticas")}><TrendingUp size={16} /> Estadísticas</Link>
-                <Link href="/reportes" className={linkCls("/reportes")}><PieChart size={16} /> Reportes</Link>
-                <Link href="/libro-cuentas" className={linkCls("/libro-cuentas")}><BookMarked size={16} /> Libro de Cuentas</Link>
-                <Link href="/history" className={linkCls("/history")}><BookOpen size={16} /> Historial Mesas</Link>
-                <Link href="/otros-ingresos" className={linkCls("/otros-ingresos")}><ArrowDownToLine size={16} /> Otros Ingresos</Link>
-                <Link href="/cotizaciones" className={linkCls("/cotizaciones")}><FilePen size={16} /> Cotizaciones</Link>
-                <Link href="/cierre-caja" className={linkCls("/cierre-caja")}>
-                  <Wallet size={16} className="text-emerald-500 shrink-0" /> Cierres de Caja
-                </Link>
-                <Link href="/cxc" className={linkCls("/cxc")}><Clock size={16} /> Por Cobrar (CXC)</Link>
-                <Link href="/cxp" className={linkCls("/cxp")}><CreditCard size={16} /> Por Pagar (CXP)</Link>
-                <Link href="/menu" className={linkCls("/menu")}><ClipboardList size={16} /> Menú / Productos</Link>
-                <Link href="/inventarios" className={linkCls("/inventarios")}><Package size={16} /> Inventarios</Link>
-                <Link href="/salidas-producto" className={linkCls("/salidas-producto")}><PackageMinus size={16} /> Salidas</Link>
-                <Link href="/configuracion" className={linkCls("/configuracion")}><Settings size={16} /> Configuración</Link>
+                <Link href="/proveedores"    className={linkCls("/proveedores")}><Users size={16} /> Proveedores</Link>
+                <Link href="/configuracion"  className={linkCls("/configuracion")}><Settings size={16} /> Configuración</Link>
               </div>
             )}
           </div>
 
-          {/* TERCEROS */}
-          <div>
-            <button onClick={() => setOpenTerceros(v => !v)}
-              className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-gray-50 transition-all group">
-              <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest group-hover:text-gray-600">Terceros</p>
-              <ChevronDown size={13} className={`text-gray-400 transition-transform duration-200 ${openTerceros ? "" : "-rotate-90"}`} />
-            </button>
-            {openTerceros && (
-              <div className="space-y-1 mt-1 mb-3">
-                <Link href="/clientes" className={linkCls("/clientes")}><User size={16} /> Clientes</Link>
-                <Link href="/proveedores" className={linkCls("/proveedores")}><Truck size={16} /> Proveedores</Link>
-                <Link href="/empleados" className={linkCls("/empleados")}><Users size={16} /> Empleados</Link>
-              </div>
-            )}
-          </div>
         </nav>
 
         {/* Footer: user info + logout */}
