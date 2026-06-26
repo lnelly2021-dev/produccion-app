@@ -223,7 +223,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
               <div className="space-y-1 mt-1 mb-3">
                 <Link href="/ingredientes"   className={linkCls("/ingredientes")}><FlaskConical size={16} /> Ingredientes</Link>
                 <Link href="/recetas"        className={linkCls("/recetas")}><BookOpen size={16} /> Recetas</Link>
-                <Link href="/centros-costo"  className={linkCls("/centros-costo")}><GitBranch size={16} /> Planificador de Producción</Link>
+                <Link href="/planificador-produccion"  className={linkCls("/planificador-produccion")}><GitBranch size={16} /> Planificador de Producción</Link>
                 <Link href="/hoja-costos"    className={linkCls("/hoja-costos")}><BarChart2 size={16} className="text-emerald-500 shrink-0" /> Hoja de Costos</Link>
               </div>
             )}
